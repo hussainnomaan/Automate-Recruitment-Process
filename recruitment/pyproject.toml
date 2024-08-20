@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "recruitment"
+version = "0.1.0"
+description = "recruitment using crewAI"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<=3.13"
+crewai = { extras = ["tools"], version = "^0.35.8" }
+selenium = "^4.21.0"
+streamlit = "^1.37.1"
+python-dotenv = "^1.0.1"
+fastapi = "^0.112.1"
+uvicorn = "^0.30.6"
+pydantic = "^2.8.2"
+
+[tool.poetry.scripts]
+recruitment = "recruitment.main:run"
+train = "recruitment.main:train"
+start-backend = "uvicorn src.recruitment.backend:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

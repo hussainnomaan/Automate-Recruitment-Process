@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import uvicorn
+from .main import run
 
 # Define the data model to store task statuses
 
@@ -10,6 +11,10 @@ class TaskStatus(BaseModel):
     match_and_score_candidates_task: bool = False
     outreach_strategy_task: bool = False
     report_candidates_task: bool = False
+
+
+class JobDescription(BaseModel):
+    job_description: str
 
 
 # Create an instance of FastAPI
@@ -25,6 +30,16 @@ async def get_task_status():
     Retrieve the current status of all tasks.
     """
     return task_status
+
+
+@app.post("/start-agents")
+async def start_agents(job_description: JobDescription):
+    """
+    Start the agents with the provided job description.
+    """
+    await run(job_description.job_description)
+    # Implement logic to start agents with the provided job description
+    return {"message": "Agents started successfully"}
 
 
 @app.put("/tasks")

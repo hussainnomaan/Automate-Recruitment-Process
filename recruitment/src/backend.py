@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import uvicorn
-from .main import run
+from main import run
 
 # Define the data model to store task statuses
 

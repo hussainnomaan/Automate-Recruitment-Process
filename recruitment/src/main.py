@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys
-from recruitment.crew import RecruitmentCrew
+from crew import RecruitmentCrew
 
 
 async def run(job_description):

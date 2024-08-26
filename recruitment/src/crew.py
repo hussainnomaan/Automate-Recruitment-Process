@@ -15,7 +15,9 @@ class RecruitmentCrew():
             config=self.agents_config['researcher'],
 						tools=[SerperDevTool(), ScrapeWebsiteTool(), LinkedInTool()],
             allow_delegation=False,
-						verbose=True
+						verbose=True,
+                        max_execution_time=1200
+
         )
 
     @agent
@@ -24,7 +26,8 @@ class RecruitmentCrew():
             config=self.agents_config['matcher'],
             tools=[SerperDevTool(), ScrapeWebsiteTool()],
             allow_delegation=False,
-						verbose=True
+						verbose=True,
+                        max_execution_time=1200
         )
 
     @agent
@@ -33,7 +36,8 @@ class RecruitmentCrew():
             config=self.agents_config['communicator'],
             tools=[SerperDevTool(), ScrapeWebsiteTool()],
             allow_delegation=False,
-						verbose=True
+						verbose=True,
+                        max_execution_time=1200
         )
 
     @agent
@@ -41,7 +45,8 @@ class RecruitmentCrew():
         return Agent(
             config=self.agents_config['reporter'],
             allow_delegation=False,
-						verbose=True
+						verbose=True,
+                        max_execution_time=1200
         )
 
     @task
@@ -80,5 +85,5 @@ class RecruitmentCrew():
             agents=self.agents,
             tasks=self.tasks,
             process=Process.sequential,
-            verbose=2,
+            verbose=True,
         )
